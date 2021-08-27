@@ -14,6 +14,7 @@ namespace Quest
             //      the text of the challenge
             //      a correct answer
             //      a number of awesome points to gain or lose depending on the success of the challenge
+            Console.WriteLine("What is your name Adventurer?");
 
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
             
