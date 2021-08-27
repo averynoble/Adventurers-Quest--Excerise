@@ -71,6 +71,15 @@ namespace Quest
             {
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
             }
+
+            Console.WriteLine("Would you like to quest again? (Y/N)");
+            if (Console.ReadLine() == "y")
+            {
+                foreach (Challenge challenge in challenges)
+                {
+                    challenge.RunChallenge(theAdventurer);
+                }
+            }    
         }
     }
 }
