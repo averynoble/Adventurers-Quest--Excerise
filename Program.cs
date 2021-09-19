@@ -16,11 +16,13 @@ namespace Quest
             //      a number of awesome points to gain or lose depending on the success of the challenge
             Console.Write("What is your name Adventurer?");
             string adventurerName = Console.ReadLine();
-            
+
             Robe adventurerRobe = new Robe() {Colors = new List<string>() {"Aquamarine", "Black"}, Length = 44};
             Hat adventurerHat = new Hat() {shininessLevel = 7};
 
             Adventurer theAdventurer = new Adventurer(adventurerName, adventurerRobe, adventurerHat);
+            Prize thePrize = new Prize("Untold riches beyond your wildest dreams!");
+
             Console.WriteLine(theAdventurer.GetDescription());
 
             Console.WriteLine("Lets begin our quest!");
@@ -78,6 +80,7 @@ namespace Quest
                 Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
             }
 
+            thePrize.ShowPrize(theAdventurer);
             Console.WriteLine("Would you like to quest again? (Y/N)");
             if (Console.ReadLine() == "y")
             {
