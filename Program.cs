@@ -62,43 +62,55 @@ namespace Quest
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because of "using System.Collections.Generic;"
-            List<Challenge> challenges = new List<Challenge>()
-            {
-                twoPlusTwo, theAnswer, whatSecond, guessRandom, favoriteBeatle, whatFace, timeManagement
-            };
 
-            // Selecting 5 Random new challenges for the adventurer
-            for (int i = 0; i < 5; i++)
+            void StartAdventure()
             {
-                int challengeCount = challenges.Count;
-                int randomChallenges = new Random().Next(challengeCount);
-                challenges[randomChallenges].RunChallenge(theAdventurer);  
-            }
-
-            // This code examines how Awesome the Adventurer is after completing the challenges
-            // And praises or humiliates them accordingly
-            if (theAdventurer.Awesomeness >= maxAwesomeness)
-            {
-                Console.WriteLine("YOU DID IT! You are truly awesome!");
-            }
-            else if (theAdventurer.Awesomeness <= minAwesomeness)
-            {
-                Console.WriteLine("Get out of my sight. You lack of awesomeness offends me!");
-            }
-            else
-            {
-                Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
-            }
-
-            thePrize.ShowPrize(theAdventurer);
-            Console.WriteLine("Would you like to quest again? (Y/N)");
-            if (Console.ReadLine() == "y")
-            {
-                foreach (Challenge challenge in challenges)
+                List<Challenge> challenges = new List<Challenge>()
                 {
-                    challenge.RunChallenge(theAdventurer);
+                    twoPlusTwo, theAnswer, whatSecond, guessRandom, favoriteBeatle, whatFace, timeManagement
+                };
+
+                // Selecting 5 Random new challenges for the adventurer
+                for (int i = 0; i < 5; i++)
+                {
+                    int challengeCount = challenges.Count;
+                    int randomChallenges = new Random().Next(challengeCount);
+                    challenges[randomChallenges].RunChallenge(theAdventurer);  
                 }
-            }    
+
+                // This code examines how Awesome the Adventurer is after completing the challenges
+                // And praises or humiliates them accordingly
+                if (theAdventurer.Awesomeness >= maxAwesomeness)
+                {
+                    Console.WriteLine("YOU DID IT! You are truly awesome!");
+                }
+                else if (theAdventurer.Awesomeness <= minAwesomeness)
+                {
+                    Console.WriteLine("Get out of my sight. You lack of awesomeness offends me!");
+                }
+                else
+                {
+                    Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
+                }
+
+                thePrize.ShowPrize(theAdventurer);
+                Console.Write("Would you like to quest again? (Y/N)");
+                string questAgain = Console.ReadLine();
+                if (questAgain == "y")
+                {
+                    Console.WriteLine("Forward we go to another adventure!");
+                    int correctCountAmount = theAdventurer.Awesomeness * 10;
+                    theAdventurer.Awesomeness += correctCountAmount;
+                    Console.WriteLine();
+                    StartAdventure();
+                }
+                else 
+                {
+                    Console.WriteLine($"So was told of the Legend of {theAdventurer.Name}!");
+                }
+            }
+
+            StartAdventure();
         }
     }
 }
