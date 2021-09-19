@@ -43,6 +43,14 @@ namespace Quest
                 @"Who's your favorite Beatle?
                 1) John 2) Paul 3) George 4) Ringo", 4, 20 );
             
+            Challenge whatFace = new Challenge(
+                @"I am a face that is always changing but consistently ends up being the same
+                1) Clock 2) Money 3) Status", 1, 10);
+            
+            Challenge timeManagement = new Challenge(
+                @"What is the most abundant resource but can never be bought
+                1) Time 2) Energy 3) Love 4) Faith", 1, 20);
+            
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
 
@@ -56,13 +64,15 @@ namespace Quest
             // Note we can use the List class here because of "using System.Collections.Generic;"
             List<Challenge> challenges = new List<Challenge>()
             {
-                twoPlusTwo, theAnswer, whatSecond, guessRandom, favoriteBeatle
+                twoPlusTwo, theAnswer, whatSecond, guessRandom, favoriteBeatle, whatFace, timeManagement
             };
 
-            // Loop through all the challenges and subject the Adventurer to them
-            foreach (Challenge challenge in challenges)
+            // Selecting 5 Random new challenges for the adventurer
+            for (int i = 0; i < 5; i++)
             {
-                challenge.RunChallenge(theAdventurer);
+                int challengeCount = challenges.Count;
+                int randomChallenges = new Random().Next(challengeCount);
+                challenges[randomChallenges].RunChallenge(theAdventurer);  
             }
 
             // This code examines how Awesome the Adventurer is after completing the challenges
