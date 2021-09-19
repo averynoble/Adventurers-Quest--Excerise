@@ -16,11 +16,13 @@ namespace Quest
             //      a number of awesome points to gain or lose depending on the success of the challenge
             Console.Write("What is your name Adventurer?");
             string adventurerName = Console.ReadLine();
-
-            Robe adventurerRobe = new Robe() {Colors = new List<string>() {"Aquamarine", "Black"}, Length = 44};
-            Adventurer theAdventurer = new Adventurer(adventurerName, adventurerRobe);
             
+            Robe adventurerRobe = new Robe() {Colors = new List<string>() {"Aquamarine", "Black"}, Length = 44};
+            Hat adventurerHat = new Hat() {shininessLevel = 7};
+
+            Adventurer theAdventurer = new Adventurer(adventurerName, adventurerRobe, adventurerHat);
             Console.WriteLine(theAdventurer.GetDescription());
+
             Console.WriteLine("Lets begin our quest!");
 
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
